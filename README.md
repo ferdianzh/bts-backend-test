@@ -1,6 +1,6 @@
 ## Project setup
 
-- copy .copy.env to .env
+- copy .env.copy to .env
 - create MySQL database named "bts_test"
 - run this command:
 
