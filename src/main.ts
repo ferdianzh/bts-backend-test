@@ -13,9 +13,18 @@ async function bootstrap() {
     .setTitle('BTS Backend Test API')
     .setDescription('API documentation for the BTS Backend Test project')
     .setVersion('1.0')
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+      name: 'Authorization',
+      in: 'header',
+    }, 'access-token')
     .build();
   const documentFactory = () =>
-    SwaggerModule.createDocument(app, swaggerConfig);
+    SwaggerModule.createDocument(app, swaggerConfig, {
+      extraModels: [],
+    });
   SwaggerModule.setup('api', app, documentFactory);
 
   await app.listen(process.env.PORT ?? 3000);
